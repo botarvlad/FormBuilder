@@ -44,16 +44,31 @@ import draggable from "vuedraggable";
 import CheckboxGroup from "./components/CheckboxGroup.vue";
 import Date from "./components/Date.vue";
 import DroppedItem from "./components/DroppedItem.vue";
-
+import FileUpload from "./components/FileUpload.vue";
+import Header from "./components/Header.vue";
+import Number from "./components/Number.vue";
+import Paragraph from "./components/Paragraph.vue";
+import RadioGroup from "./components/RadioGroup.vue";
+import Select from "./components/Select.vue";
+import TextField from "./components/TextField.vue";
+import TextArea from "./components/TextArea.vue";
 export default {
   name: "custom-clone",
   display: "Custom Clone",
   order: 3,
   components: {
+    Header,
+    TextField,
+    TextArea,
+    Select,
+    RadioGroup,
+    Paragraph,
+    Number,
     draggable,
     CheckboxGroup,
     Date,
     DroppedItem,
+    FileUpload,
   },
   data() {
     return {
@@ -74,53 +89,98 @@ export default {
         },
         {
           type: "date",
-          label: "Date",
+          required: false,
+          label: "Date Filed",
+          class: "form-control",
+          name: "",
           icon: "calendar-days",
         },
         {
           label: "File Upload",
-          type: "file",
+          type: "file-upload",
           icon: "upload",
+          subtype: "file",
+          class: "form-control",
+          multipleFiles: false,
         },
         {
           type: "header",
           label: "Header",
           icon: "heading",
+          headerType: "h1",
         },
         {
-          type: "hidden",
+          type: "hidden-input",
           label: "Hidden input",
+          name: "Hidden",
+          value: "",
           icon: "user-ninja",
         },
         {
           type: "number",
           label: "Number",
           icon: "hashtag",
+          class: "form-control",
         },
         {
           type: "paragraph",
           label: "Paragraph",
           icon: "paragraph",
+          content: "paragraph",
+          paragraphType: "p",
         },
         {
           type: "radio-group",
+          required: false,
+          inline: false,
           label: "Radio Group",
           icon: "radio",
+          options: [
+            {
+              id: 0,
+              label: "Option 1",
+              value: "option-1",
+              selected: false,
+            },
+            { id: 1, label: "Option 2", value: "option-2", selected: false },
+            { id: 2, label: "Option 3", value: "option-3", selected: false },
+          ],
         },
         {
           type: "select",
           label: "Select",
           icon: "list",
+          selectedOption: "",
+          options: [
+            {
+              id: 0,
+              label: "Option 1",
+              value: "option-1",
+            },
+            {
+              id: 1,
+              label: "Option 2",
+              value: "option-2",
+            },
+            {
+              id: 2,
+              label: "Option 3",
+              value: "option-3",
+            },
+          ],
         },
         {
-          type: "text",
+          type: "text-field",
           label: "Text Field",
           icon: "keyboard",
+          textType: "text",
         },
         {
-          type: "textarea",
+          type: "text-area",
           label: "Text Area",
           icon: "comment",
+          textType: "textarea",
+          class: "birth-control",
         },
       ],
     };

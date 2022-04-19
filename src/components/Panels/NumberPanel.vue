@@ -38,6 +38,18 @@
     <label class="left-form" for="input-text">Value</label>
     <input class="right-form form-text" type="text" v-model="item.value" />
   </div>
+  <div class="form-group">
+    <label class="left-form" for="input-text">Min</label>
+    <input class="right-form form-text" type="number" v-model="item.min" />
+  </div>
+  <div class="form-group">
+    <label class="left-form" for="input-text">Max</label>
+    <input class="right-form form-text" type="number" v-model="item.max" />
+  </div>
+  <div class="form-group">
+    <label class="left-form" for="input-text">Step</label>
+    <input class="right-form form-text" type="number" v-model="item.step" />
+  </div>
 </template>
 
 <script>

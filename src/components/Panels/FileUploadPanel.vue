@@ -35,8 +35,16 @@
     <input class="right-form form-text" type="text" v-model="item.name" />
   </div>
   <div class="form-group">
-    <label class="left-form" for="input-text">Value</label>
-    <input class="right-form form-text" type="text" v-model="item.value" />
+    <label class="left-form" for="input-text">Type</label>
+    <select class="right-form" v-model="item.subtype">
+      <option value="file">File</option>
+      <option value="fine">Fine</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="left-form" for="checkbox">Multiple Files</label>
+    <input class="right-form" type="checkbox" v-model="item.multipleFiles" />
+    <span>Allow users to upload multiple files</span>
   </div>
 </template>
 

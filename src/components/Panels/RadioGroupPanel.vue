@@ -14,10 +14,6 @@
     <input class="right-form form-text" type="text" v-model="item.helpText" />
   </div>
   <div class="form-group">
-    <label class="left-form" for="checkbox">Toggle</label>
-    <input class="right-form" type="checkbox" v-model="item.toggle" />
-  </div>
-  <div class="form-group">
     <label class="left-form" for="checkbox">Inline</label>
     <input class="right-form" type="checkbox" v-model="item.inline" />
     <span>Display checkbox inline</span>
@@ -39,7 +35,7 @@
     <label class="left-form" for="options">Options</label>
     <div class="options-panel">
       <div class="option" v-for="option in item.options" :key="option.id">
-        <input type="checkbox" v-model="option.selected" />
+        <input type="radio" v-model="option.selected" />
         <input type="text" v-model="option.label" />
         <input type="text" v-model="option.value" />
       </div>
@@ -53,7 +49,7 @@ export default {
   props: ["item"],
   data() {
     return {
-      optionId: 1,
+      optionId: 3,
     };
   },
   methods: {

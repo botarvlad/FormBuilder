@@ -38,6 +38,26 @@
     <label class="left-form" for="input-text">Value</label>
     <input class="right-form form-text" type="text" v-model="item.value" />
   </div>
+  <div class="form-group">
+    <label class="left-form">Type</label>
+    <select class="right-form" v-model="item.textType">
+      <option value="textarea">Text Area</option>
+      <option value="tinyMCE">TinyMCE</option>
+      <option value="quill">quill</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="left-form" for="input-text">Max Length</label>
+    <input
+      class="right-form form-text"
+      type="number"
+      v-model="item.maxLength"
+    />
+  </div>
+  <div class="form-group">
+    <label class="left-form" for="input-text">Rows</label>
+    <input class="right-form form-text" type="number" v-model="item.rows" />
+  </div>
 </template>
 
 <script>

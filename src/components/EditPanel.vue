@@ -8,11 +8,29 @@
 <script>
 import CheckboxGroupPanel from "./Panels/CheckboxGroupPanel.vue";
 import DatePanel from "./Panels/DatePanel.vue";
+import FileUploadPanel from "./Panels/FileUploadPanel.vue";
+import HeaderPanel from "./Panels/HeaderPanel.vue";
+import HiddenInputPanel from "./Panels/HiddenInputPanel.vue";
+import NumberPanel from "./Panels/NumberPanel.vue";
+import ParagraphPanel from "./Panels/ParagraphPanel.vue";
+import RadioGroupPanel from "./Panels/RadioGroupPanel.vue";
+import SelectPanel from "./Panels/SelectPanel.vue";
+import TextFieldPanel from "./Panels/TextFieldPanel.vue";
+import TextAreaPanel from "./Panels/TextAreaPanel.vue";
 
 export default {
   components: {
+    ParagraphPanel,
+    TextAreaPanel,
+    TextFieldPanel,
+    SelectPanel,
+    RadioGroupPanel,
+    NumberPanel,
     CheckboxGroupPanel,
     DatePanel,
+    FileUploadPanel,
+    HeaderPanel,
+    HiddenInputPanel,
   },
   props: ["item", "opened"],
   data() {

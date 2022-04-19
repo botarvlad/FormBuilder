@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="date" />
+    <input type="number" :step="item.step" :max="item.max" :min="item.min" />
   </div>
 </template>
 
