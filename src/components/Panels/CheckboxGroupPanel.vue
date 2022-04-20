@@ -1,9 +1,7 @@
 <template>
   <div class="form-group">
     <label class="left-form" for="checkbox">Required</label>
-    <div class="input-container">
-      <input class="right-form" type="checkbox" v-model="item.required" />
-    </div>
+    <input class="right-form" type="checkbox" v-model="item.required" />
   </div>
   <div class="form-group">
     <label class="left-form" for="input-text">Label</label>
@@ -40,12 +38,12 @@
     <div class="options-panel">
       <div class="option" v-for="option in item.options" :key="option.id">
         <input type="checkbox" v-model="option.selected" />
-        <input type="text" v-model="option.label" />
-        <input type="text" v-model="option.value" />
+        <input type="text" class="form-text" v-model="option.label" />
+        <input type="text" class="form-text" v-model="option.value" />
       </div>
     </div>
-    <button class="add" @click="addOption">Add Option +</button>
   </div>
+  <button class="add" @click="addOption">Add Option +</button>
 </template>
 
 <script>
@@ -73,7 +71,7 @@ export default {
 <style>
 .options-panel {
   background-color: white;
-  margin-left: 132px;
+  margin-left: 15px;
   width: 82%;
   border: 1px solid gray;
   border-radius: 2px;
@@ -86,6 +84,7 @@ export default {
 .options-panel .option {
   display: flex;
   column-gap: 10px;
+  align-items: center;
 }
 
 button {

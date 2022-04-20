@@ -1,9 +1,7 @@
 <template>
   <div class="form-group">
     <label class="left-form" for="checkbox">Required</label>
-    <div class="input-container">
-      <input class="right-form" type="checkbox" v-model="item.required" />
-    </div>
+    <input class="right-form" type="checkbox" v-model="item.required" />
   </div>
   <div class="form-group">
     <label class="left-form" for="input-text">Label</label>

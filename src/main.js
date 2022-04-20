@@ -45,6 +45,9 @@ const store = createStore({
       copiedItem.id = state.globalId++;
       state.droppedItems.push(copiedItem);
     },
+    clearAll(state) {
+      state.droppedItems = [];
+    },
   },
 });
 

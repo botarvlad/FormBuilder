@@ -48,7 +48,7 @@ export default {
 
 <style>
 .edit-panel {
-  background: #d8d8d8;
+  background: #f7f7f7;
   border-radius: 5px;
   top: -30px;
   padding: 20px 30px;
@@ -57,6 +57,9 @@ export default {
 
 .form-group {
   width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .left-form {
@@ -78,6 +81,12 @@ export default {
 
 .form-text {
   width: 82%;
+  height: 35px;
+  padding: 0 10px;
+}
+
+.form-group span {
+  margin-left: 10px;
 }
 
 button {

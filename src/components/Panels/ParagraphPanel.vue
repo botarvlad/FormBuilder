@@ -1,10 +1,8 @@
 <template>
   <div class="form-group">
     <label class="left-form" for="checkbox">Content</label>
-    <div class="input-container">
-      <input class="right-form" type="checkbox" v-model="item.required" />
-      <textarea cols="30" rows="10" v-model="item.content"></textarea>
-    </div>
+    <input class="right-form" type="checkbox" v-model="item.required" />
+    <textarea cols="30" rows="10" v-model="item.content"></textarea>
   </div>
   <div class="form-group">
     <label class="left-form" for="input-text">Type</label>

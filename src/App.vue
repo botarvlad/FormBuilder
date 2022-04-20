@@ -19,7 +19,7 @@
       </draggable>
     </div>
 
-    <div class="col-3">
+    <div class="col-3 sticky">
       <draggable
         class="list-area list-group"
         :list="itemsList"
@@ -35,6 +35,17 @@
           </div>
         </template>
       </draggable>
+      <div class="buttons">
+        <button @click="clearDroppedItems" class="button danger">CLEAR</button>
+        <button @click="showModal = true" class="button code">[{...}]</button>
+      </div>
+      <Teleport to="body">
+        <modal
+          :show="showModal"
+          :data="$store.state.droppedItems"
+          @close="showModal = false"
+        ></modal>
+      </Teleport>
     </div>
   </div>
 </template>
@@ -52,12 +63,15 @@ import RadioGroup from "./components/RadioGroup.vue";
 import Select from "./components/Select.vue";
 import TextField from "./components/TextField.vue";
 import TextArea from "./components/TextArea.vue";
+import Modal from "./components/Modal.vue";
+
 export default {
   name: "custom-clone",
   display: "Custom Clone",
   order: 3,
   components: {
     Header,
+    Modal,
     TextField,
     TextArea,
     Select,
@@ -82,7 +96,7 @@ export default {
           toggle: false,
           inline: false,
           class: "",
-          name: "",
+          name: "checkbox-group-",
           options: [
             { id: 0, label: "Option 1", value: "option-1", selected: true },
           ],
@@ -92,7 +106,7 @@ export default {
           required: false,
           label: "Date Filed",
           class: "form-control",
-          name: "",
+          name: "date-",
           icon: "calendar-days",
         },
         {
@@ -102,17 +116,19 @@ export default {
           subtype: "file",
           class: "form-control",
           multipleFiles: false,
+          name: "file-",
         },
         {
           type: "header",
           label: "Header",
           icon: "heading",
           headerType: "h1",
+          name: "header-",
         },
         {
           type: "hidden-input",
           label: "Hidden input",
-          name: "Hidden",
+          name: "hidden-",
           value: "",
           icon: "user-ninja",
         },
@@ -121,6 +137,7 @@ export default {
           label: "Number",
           icon: "hashtag",
           class: "form-control",
+          name: "number-",
         },
         {
           type: "paragraph",
@@ -128,6 +145,7 @@ export default {
           icon: "paragraph",
           content: "paragraph",
           paragraphType: "p",
+          name: "paragraph-",
         },
         {
           type: "radio-group",
@@ -135,6 +153,7 @@ export default {
           inline: false,
           label: "Radio Group",
           icon: "radio",
+          name: "radio-group-",
           options: [
             {
               id: 0,
@@ -151,6 +170,7 @@ export default {
           label: "Select",
           icon: "list",
           selectedOption: "",
+          name: "select-",
           options: [
             {
               id: 0,
@@ -174,6 +194,7 @@ export default {
           label: "Text Field",
           icon: "keyboard",
           textType: "text",
+          name: "text-field-",
         },
         {
           type: "text-area",
@@ -181,8 +202,10 @@ export default {
           icon: "comment",
           textType: "textarea",
           class: "birth-control",
+          name: "text-area-",
         },
       ],
+      showModal: false,
     };
   },
   methods: {
@@ -192,11 +215,16 @@ export default {
     clone(evt) {
       const item = JSON.parse(JSON.stringify(evt));
       item.id = this.$store.getters.getGlobalId;
+      item.name += Math.floor(Math.random() * 1000000000) + "-" + item.id;
       this.$store.commit("increaseGlobalId");
       console.log(item);
 
       return item;
     },
+    clearDroppedItems() {
+      this.$store.commit("clearAll");
+    },
+    exportDroppedItems() {},
   },
 };
 </script>
@@ -216,17 +244,23 @@ export default {
   background-position: center;
   background-size: cover; */
   background-color: rgb(138, 34, 138);
+  height: 100%;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
 
 .container {
   display: flex;
   width: 1300px;
-  height: 100vh;
+  min-height: 100vh;
   margin: auto;
   column-gap: 10px;
   padding: 200px 20px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .drop-area {
@@ -234,12 +268,42 @@ export default {
   flex-direction: column;
   row-gap: 1px;
   width: 800px;
-  height: 500px;
+  min-height: 500px;
 }
 
 .empty {
   border: 3px dashed #ccc;
   background-color: rgba(255, 255, 255, 0.25);
+}
+
+.buttons {
+  position: absolute;
+  margin-top: 10px;
+}
+
+.button {
+  background-color: white;
+  padding: 10px 10px;
+}
+
+.button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.code {
+  background-color: #3e3f3a;
+  color: white;
 }
 
 .empty::after {
@@ -248,7 +312,7 @@ export default {
   position: relative;
   align-self: center;
   top: 50%;
-  margin-top: -1rem;
+  margin-top: 14rem;
   color: white;
   font-size: 16px;
 }

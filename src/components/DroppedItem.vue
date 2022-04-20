@@ -22,9 +22,15 @@
     </div>
     <slot name="header"></slot>
     <div v-show="showButtons" class="input-actions">
-      <button @click="deleteItem(item.id)" class="danger">X</button>
-      <button @click="showEditPanel = !showEditPanel" class="edit">E</button>
-      <button @click="copyItem(item.id)" class="copy">C</button>
+      <button @click="deleteItem(item.id)" class="danger-btn">
+        <fa icon="xmark" />
+      </button>
+      <button @click="showEditPanel = !showEditPanel" class="edit-btn">
+        <fa icon="pencil" />
+      </button>
+      <button @click="copyItem(item.id)" class="clone-btn">
+        <fa icon="clone" />
+      </button>
     </div>
     <EditPanel
       @closeEdit="showEditPanel = !showEditPanel"
@@ -72,6 +78,22 @@ export default {
   text-align: left;
 }
 
+button {
+  padding: 5px 10px;
+}
+
+.danger-btn:hover {
+  background-color: #d9534f;
+}
+
+.edit-btn:hover {
+  background-color: rgb(76, 210, 234);
+}
+
+.clone-btn:hover {
+  background-color: rgb(119, 205, 76);
+}
+
 .hidden_input {
   background: rgba(255, 255, 255, 0.7);
 }
@@ -80,7 +102,6 @@ export default {
   display: flex;
   top: 0;
   right: 0;
-  column-gap: 10px;
 }
 
 .input-title {

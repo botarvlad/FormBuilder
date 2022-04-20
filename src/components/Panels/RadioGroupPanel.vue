@@ -1,9 +1,7 @@
 <template>
   <div class="form-group">
     <label class="left-form" for="checkbox">Required</label>
-    <div class="input-container">
-      <input class="right-form" type="checkbox" v-model="item.required" />
-    </div>
+    <input class="right-form" type="checkbox" v-model="item.required" />
   </div>
   <div class="form-group">
     <label class="left-form" for="input-text">Label</label>
@@ -36,12 +34,12 @@
     <div class="options-panel">
       <div class="option" v-for="option in item.options" :key="option.id">
         <input type="radio" v-model="option.selected" />
-        <input type="text" v-model="option.label" />
-        <input type="text" v-model="option.value" />
+        <input type="text" class="form-text" v-model="option.label" />
+        <input type="text" class="form-text" v-model="option.value" />
       </div>
     </div>
-    <button class="add" @click="addOption">Add Option +</button>
   </div>
+  <button class="add" @click="addOption">Add Option +</button>
 </template>
 
 <script>
@@ -66,36 +64,4 @@ export default {
 };
 </script>
 
-<style>
-.options-panel {
-  background-color: white;
-  margin-left: 132px;
-  width: 82%;
-  border: 1px solid gray;
-  border-radius: 2px;
-  padding: 10px 15px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
-
-.options-panel .option {
-  display: flex;
-  column-gap: 10px;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  padding: 5px;
-  background-color: transparent;
-}
-
-.add {
-  color: rgb(136, 207, 29);
-  border: 1px solid gray;
-  background-color: white;
-  float: right;
-  border-radius: 5px;
-}
-</style>
+<style></style>
